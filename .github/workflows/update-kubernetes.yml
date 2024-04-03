@@ -1,0 +1,21 @@
+name: Update Kubernetes
+
+on:
+  push:
+    branches:
+      - main # Змініть це на вашу основну гілку
+
+jobs:
+  update-kubernetes:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Update Kubernetes
+      run: |
+        # Тут вам потрібно додати команди для оновлення вашого локального кластера Kubernetes.
+        # Наприклад, якщо ви використовуєте Minikube, ви можете викликати `minikube update`.
+
+        minikube update
