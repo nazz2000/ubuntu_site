@@ -1,22 +1,8 @@
-# Використовуємо офіційний образ Node.js
-FROM node:14
+FROM node:lts-alpine AS builder
+WORKDIR /usr/share/nginx/html
 
-# Встановлюємо робочу директорію в контейнері
-WORKDIR /usr/src/app
+COPY index.html .
 
-# Копіюємо файли package.json та package-lock.json в контейнер
-COPY package*.json ./
-
-# Встановлюємо залежності
-RUN npm install
-
-# Копіюємо решту файлів в контейнер
-COPY . .
-
-# Відкриваємо порт, на якому працює додаток
-EXPOSE 3000
-
-# Команда для запуску додатку
-CMD ["npm", "start"]
-
-
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
