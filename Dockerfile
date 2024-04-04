@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS builder
+FROM nginx:1.16
 WORKDIR /usr/share/nginx/html
 
 COPY index.html .
